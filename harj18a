@@ -1,0 +1,52 @@
+/*Harjoitus 18 (Palautus vko 46)
+Tee ohjelma, joka kysyy viiden koiran nimet ja iät.
+Tiedot tallennetaan tietuetaulukkoon.
+a) järjestä tiedot ikä -kentän mukaan suuruusjärjestykseen
+(pienimmästä suurimpaan). Ohjelma tulostaa lopuksi
+jarjestetyn taulukon näytälle. */
+//a)-kohta
+#include <iostream>
+using namespace std;
+struct Koirat
+{
+	char nimi [10];
+	int ika;
+};
+int main()
+{
+	Koirat tiedot[5];
+	cout<<"Anna viiden koiran nimet ja iat"<<endl;
+	cout<<"\nAnna ensimmäisen koiran nimi ja ika: ";
+	cin>>tiedot[0].nimi>>ws>>tiedot[0].ika;
+	cout<<"\nAnna toisen koiran nimi ja ika: ";
+	cin>>tiedot[1].nimi>>ws>>tiedot[1].ika;
+	cout<<"\nAnna kolmannen koiran nimi ja ika: ";
+	cin>>tiedot[2].nimi>>ws>>tiedot[2].ika;
+	cout<<"\nAnna neljannen koiran nimi ja ika: ";
+	cin>>tiedot[3].nimi>>ws>>tiedot[3].ika;
+	cout<<"\nAnna viidennen koiran nimi ja ika: ";
+	cin>>tiedot[4].nimi>>ws>>tiedot[4].ika;
+	cout<<"\nTaulukko jarjestyksessa: ";
+	int ind;
+	for(ind=0;ind<5; ind++)
+	{
+		cout<<tiedot[ind].nimi<<" ";
+	}
+	cout<<endl;
+	for(int i=0; i<5-1;i++)
+	{
+		for(int j=i+1;j<5; j++)
+			if( tiedot[j].ika<tiedot[i].ika)
+			{
+				Koirat asd=tiedot[j];
+				tiedot[j]=tiedot[i];
+				tiedot[i]=asd;
+			}
+	}
+	cout<<"Taulukko jarjestyksen jalkeen: ";
+	for(ind=0;ind<5;ind++)
+	{
+		cout<<tiedot[ind].nimi<<" ";
+	}
+	return 0;
+}
